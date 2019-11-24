@@ -59,6 +59,10 @@ func buildTaskService() (*tasks.Service, error) {
 	}
 
 	client, err := getClient(config)
+	if err != nil {
+		return nil, err
+	}
+
 	ts, err := tasks.NewService(ctx, option.WithHTTPClient(client))
 	if err != nil {
 		return nil, err
